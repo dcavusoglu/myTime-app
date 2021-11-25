@@ -1,0 +1,54 @@
+<div class="task-container">
+  <h1>Tasks</h1>
+
+  <table class="table table-hover table-borderless">
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Deadline</th>
+        <th>Done</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @tasks.each do |task| %>
+        <% if task.done %>
+          <tr>
+            <td><%= task.done ? '✅' : '❌'  %></td>
+            <td><%= task.name %></td>
+            <td><%= task.description %></td>
+            <td><%= task.deadline.strftime("%d/%m/%Y") %></td>
+            <td>
+              <%= form_for(task) do |f| %>
+              <%= f.check_box :done, :checked => false, :style => 'visibility: hidden' %>
+              <%= f.submit 'Cross', class: 'btn btn-sm', id: 'btn-check' %>
+              <% end %>
+            </td>
+            <td><%= link_to '🗑', task, method: :delete, data: { confirm: 'Silmek istediğinize emin misiniz?' }, class: 'btn btn-sm' %></td>
+          </tr>
+        <% else %>
+          <tr>
+            <td><%= task.done ? '✅' : '❌'  %></td>
+            <td><%= task.name %></td>
+            <td><%= task.description %></td>
+            <td><%= task.deadline.strftime("%d/%m/%Y") %></td>
+            <td>
+              <%= form_for(task) do |f| %>
+              <%= f.check_box :done, :checked => true, :style => 'visibility: hidden' %>
+              <%= f.submit 'Check', class: 'btn btn-sm', id: 'btn-check' %>
+              <% end %>
+            </td>
+            <td><%= link_to '🗑', task, method: :delete, data: { confirm: 'Silmek istediğinize emin misiniz?' }, class: 'btn btn-sm' %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Task', new_task_path, class:'btn btn-info btn-sm' %>
+</div>
