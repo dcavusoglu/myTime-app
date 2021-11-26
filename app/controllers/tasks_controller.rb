@@ -6,9 +6,6 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
-  def home
-    index
-  end
 
   # GET /tasks/1 or /tasks/1.json
   def show
