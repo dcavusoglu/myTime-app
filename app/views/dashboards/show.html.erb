@@ -26,7 +26,7 @@
               <td>
                 <%= form_for(task) do |f| %>
                 <%= f.check_box :done, :checked => false, :style => 'visibility: hidden' %>
-                <%= f.submit 'Cross', class: 'btn btn-sm', id: 'btn-check' %>
+                <%= f.submit 'Cross', class: 'btn', id: 'btn-check' %>
                 <% end %>
               </td>
               <td><%= link_to '🗑', task, method: :delete, data: { confirm: 'Silmek istediğinize emin misiniz?' }, class: 'btn btn-sm' %></td>
