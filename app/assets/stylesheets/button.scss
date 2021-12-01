@@ -1,9 +1,12 @@
+@import "colors";
+
 #btn-check {
   color: #fff;
-  background-color: #457b9d;
+  background-color: $blue-hex;
   &:hover {
     background-color: #a8dadc;
   }
+  position: relative;
 }
 
 #btn-back {
@@ -12,4 +15,13 @@
   &:hover {
     background-color: #789c81;
   }
+}
+
+#btn-cross {
+  color: #fff;
+  background-color: $yellow-hex;
+  &:hover {
+    background-color: #b2ecd4;
+  }
+  position: relative;
 }

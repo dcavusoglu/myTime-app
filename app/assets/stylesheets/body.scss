@@ -1,3 +1,5 @@
+@import "colors";
+
 * {
   font-family: 'Pangolin', cursive;
 }
@@ -16,8 +18,8 @@
 body {
   background-attachment: fixed;
   place-items: center;
-  background: rgb(24, 58, 26);
-  background: linear-gradient(90deg, rgb(23, 28, 26) 0%, rgba(24, 24, 24, 1) 75%);
+  background: rgb(242, 230, 53);
+  background: linear-gradient(90deg, rgb(242, 110, 80) 0%, rgba(242, 193, 46, 1) 75%);
 }
 
 .container-new {
@@ -39,4 +41,11 @@ h1, p, tr {
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: rgba(202, 247, 248, 0.479);
+}
+
+.container-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

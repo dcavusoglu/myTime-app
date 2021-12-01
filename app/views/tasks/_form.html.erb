@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= form.text_field :name, placeholder: 'task name' %>
+    <%= form.text_field :name, placeholder: 'task name', class: "form-box" %>
   </div>
 
   <div class="field">
-    <%= form.text_field :description, placeholder: 'task description' %>
+    <%= form.text_field :description, placeholder: 'task description', class: "form-box" %>
   </div>
 
   <div class="field">
@@ -24,10 +24,10 @@
   </div>
 
   <div class="field">
-    <%= form.number_field :user_id, id: :friend_user_id, value: current_user.id, type: :hidden %>
+    <%= form.number_field :user_id, id: :friend_user_id, value: current_user.id, type: :hidden, class: "form-box" %>
   </div>
-
+  <br>
   <div class="actions">
-    <%= form.submit class:'btn btn-info' %>
+    <%= form.submit class:'btn btn-sm', id:'btn-check' %>
   </div>
 <% end %>

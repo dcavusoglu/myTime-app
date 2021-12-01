@@ -1,0 +1,13 @@
+@import "colors";
+
+#form-field {
+  margin: 8px;
+  color: $blue-hex;
+}
+
+.form-box{
+  border-radius: 5px;
+  border: 1px solid $green-hex;
+  margin: 8px;
+  padding: 3px 5px;
+}
