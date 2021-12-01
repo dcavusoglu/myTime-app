@@ -1,2 +1,4 @@
-<h1>Welcome to myTime</h1>
+<h1>Welcome to myTime <%= current_user.username.capitalize %> </h1>
 <p>Start to manage your time and reach your goals!</p>
+
+<%= link_to 'New Task', new_task_path, class:'btn btn-info btn-sm' %>

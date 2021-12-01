@@ -1,5 +1,5 @@
+<h2 class="page-title" >Welcome <%= current_user.username.capitalize %> </h2>
 <div class="task-container">
-  <h2>Welcome <%= current_user.username %> </h2>
   <h1>Tasks</h1>
 
   <table class="table table-hover table-borderless">
@@ -16,34 +16,36 @@
 
     <tbody>
       <% @tasks.each do |task| %>
-        <% if task.done %>
-          <tr>
-            <td><%= task.done ? '✅' : '❌'  %></td>
-            <td><%= task.name %></td>
-            <td><%= task.description %></td>
-            <td><%= task.deadline.strftime("%d/%m/%Y") %></td>
-            <td>
-              <%= form_for(task) do |f| %>
-              <%= f.check_box :done, :checked => false, :style => 'visibility: hidden' %>
-              <%= f.submit 'Cross', class: 'btn btn-sm', id: 'btn-check' %>
-              <% end %>
-            </td>
-            <td><%= link_to '🗑', task, method: :delete, data: { confirm: 'Silmek istediğinize emin misiniz?' }, class: 'btn btn-sm' %></td>
-          </tr>
-        <% else %>
-          <tr>
-            <td><%= task.done ? '✅' : '❌'  %></td>
-            <td><%= task.name %></td>
-            <td><%= task.description %></td>
-            <td><%= task.deadline.strftime("%d/%m/%Y") %></td>
-            <td>
-              <%= form_for(task) do |f| %>
-              <%= f.check_box :done, :checked => true, :style => 'visibility: hidden' %>
-              <%= f.submit 'Check', class: 'btn btn-sm', id: 'btn-check' %>
-              <% end %>
-            </td>
-            <td><%= link_to '🗑', task, method: :delete, data: { confirm: 'Silmek istediğinize emin misiniz?' }, class: 'btn btn-sm' %></td>
-          </tr>
+        <% if task.user == current_user %>
+          <% if task.done %>
+            <tr>
+              <td><%= task.done ? '✅' : '❌'  %></td>
+              <td><%= task.name %></td>
+              <td><%= task.description %></td>
+              <td><%= task.deadline.strftime("%d/%m/%Y") %></td>
+              <td>
+                <%= form_for(task) do |f| %>
+                <%= f.check_box :done, :checked => false, :style => 'visibility: hidden' %>
+                <%= f.submit 'Cross', class: 'btn btn-sm', id: 'btn-check' %>
+                <% end %>
+              </td>
+              <td><%= link_to '🗑', task, method: :delete, data: { confirm: 'Silmek istediğinize emin misiniz?' }, class: 'btn btn-sm' %></td>
+            </tr>
+          <% else %>
+            <tr>
+              <td><%= task.done ? '✅' : '❌'  %></td>
+              <td><%= task.name %></td>
+              <td><%= task.description %></td>
+              <td><%= task.deadline.strftime("%d/%m/%Y") %></td>
+              <td>
+                <%= form_for(task) do |f| %>
+                <%= f.check_box :done, :checked => true, :style => 'visibility: hidden' %>
+                <%= f.submit 'Check', class: 'btn btn-sm', id: 'btn-check' %>
+                <% end %>
+              </td>
+              <td><%= link_to '🗑', task, method: :delete, data: { confirm: 'Silmek istediğinize emin misiniz?' }, class: 'btn btn-sm' %></td>
+            </tr>
+          <% end %>
         <% end %>
       <% end %>
     </tbody>
